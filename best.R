@@ -1,6 +1,7 @@
 #State variable is column 7
 
 library(dplyr)
+setwd('C:/Users/Travis/Documents/R programming/rprog-data-ProgAssignment3-data')
 
 
 best<- function(state,outcome){
@@ -16,19 +17,20 @@ best<- function(state,outcome){
         out<- as.numeric(by_state[,11]) #convert character to numbers, get NAs
         low<-min(out, na.rm = T) 
         low_info<-filter(by_state,by_state[11] == low) #finds row with min value
-        hospital<-low_info[1,2]
+        
     } else if (outcome == 'heart failure') {
         out<- as.numeric(by_state[,17])
         low<-min(out, na.rm = T)
         low_info<-filter(by_state,by_state[17] == low)
-        hospital<-low_info[1,2]
+       
     } else if (outcome == 'pneumonia') {
         out<-as.numeric(by_state[,23])
         low<-min(out, na.rm = T)
         low_info<-filter(by_state,by_state[23] == low)
-        hospital<-low_info[1,2]
+        
     }
-    return(hospital)
+    hospital<-low_info[2]
+    return(as.character(hospital))
 }
 
 
