@@ -12,9 +12,9 @@ best<- function(state,outcome){
     states<-unique(data[,7]) #creates factor of all states
     if (state %in% states == FALSE) stop('invalid state') #error 
     if (outcome != 'heart attack' & outcome != 'heart failure' & 
-        outcome != 'pneumonia') stop('invalid state')
+        outcome != 'pneumonia') stop('invalid outcome')
     for (i in 1:nrow(data)) {
-        st<-data[i,7] #selects state of each row in loop 
+        st<-data[i,7] #selects state of each row in loop a=
         if(st == state) {
             by_state<-rbind(by_state,data[i,]) #adds all columns of data
         }
