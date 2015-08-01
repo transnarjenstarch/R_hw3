@@ -9,6 +9,10 @@ setwd('C:/Users/Travis/Documents/R programming/rprog-data-ProgAssignment3-data')
 best<- function(state,outcome){
     data<-read.csv('outcome-of-care-measures.csv', colClasses='character')
     by_state<-data.frame() #creates empty data frame 
+    states<-unique(data[,7]) #creates factor of all states
+    if (state %in% states == FALSE) stop('invalid statement') #error 
+    if (outcome != 'heart attack' & outcome != 'heart failure' & 
+        outcome != 'pneumonia') stop('invalid statement')
     for (i in 1:nrow(data)) {
         st<-data[i,7] #selects state of each row in loop 
         if(st == state) {
@@ -32,8 +36,12 @@ best<- function(state,outcome){
         low_info<-filter(by_state,by_state[23] == low)
         
     }
-    hospital<-low_info[,2]
-    return(as.character(hospital))
+    hospital<- as.character(low_info[,2])
+    print(class(hospital))
+        #if (nhosps > 1) {
+        #hospital <- sort(hospital)
+        #}
+    return(hospital)
 }
 
 
