@@ -39,7 +39,7 @@ best<- function(state,outcome){
     }
     hospital<- as.character(low_info[,2])
     hospital<- sort(hospital) # sorts alphabetically if >1 hospital
-    return(hospital)
+    return(hospital[1])
 }
 
 
